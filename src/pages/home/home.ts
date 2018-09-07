@@ -34,7 +34,7 @@ counter = 0;
     firebase.database().ref('/tasks/').on("value", (snapshot)=>{
       snapshot.forEach(e => {
         
-        this.tasksName.push({name: e.val().taskName})
+          this.tasksName.push({name: e.val().taskName})
       });
     })
 

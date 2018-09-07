@@ -1,17 +1,14 @@
 
 <ion-header>
 
-  <ion-navbar color="web">
-    <ion-title text-center>{{task}}<br> {{timerVal}}</ion-title>
-    
-  </ion-navbar>
+ <b><p id="header-text">{{task}} {{timerVal}}</p></b> 
 
 </ion-header>
 
 <ion-content padding id="web"> 
 
 
-  <form
+  <form id="questionForm"
   [formGroup]="form"
   (ngSubmit)="manage(form.value)" style="background-color: white">
    <ion-list
@@ -74,3 +71,4 @@
       text-center>Submit!</button>
    </form>  
 </ion-content>
+

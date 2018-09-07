@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 import {Observable} from 'rxjs/Observable'
 import 'rxjs/add/observable/interval';
 import { ToastController } from 'ionic-angular';
@@ -23,6 +23,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 })
 export class Task1Page {
  
+  setRootPage = ""
 timerVar;
 timerVal;
 task:''

@@ -18,8 +18,8 @@
  
 <b><p text-center>Tasks to complete</p></b> 
     
-    <div *ngFor="let item of tasksName; let i = index">
-      <ion-card color="web">
+    <div *ngFor="let item of tasksName; let i = index" id="card">
+      <ion-card color="web" *ngIf="item?.name != ''">
         <ion-card-header (click)="task(item.name)">
             <b>{{item?.name}}</b>
         </ion-card-header>
