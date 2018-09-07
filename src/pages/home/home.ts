@@ -7,6 +7,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+declare var firebase;
 
 @IonicPage()
 @Component({
@@ -20,33 +21,43 @@ check1:boolean;
 check2:boolean;
 done:boolean;
 
+tasksName = [{
+  name:''
+}]
+
+counter = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.check = true;
     this.check1 = true;
     this.check2 = true;
     this.done = false;
-
+    firebase.database().ref('/tasks/').on("value", (snapshot)=>{
+      snapshot.forEach(e => {
+        
+        this.tasksName.push({name: e.val().taskName})
+      });
+    })
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
   }
-  task1(){
+  task(myTask){
+    console.log(myTask)
     
-    this.navCtrl.push("Task1Page");
     this.check = false;
+
+    firebase.database().ref('/'+myTask+'/').on("value", (snapshot)=>{
+      snapshot.forEach(e => {
+        
+        this.counter +=1;
+      });
+      console.log("done counting..."+this.counter)
+    })
+
+    this.navCtrl.push("Task1Page", {taskName: myTask, counter: this.counter});
+    this.counter = 0;
   }
-  task2(){
-   this.check = false;
-    this.navCtrl.push("Task2Page");
-    this.check1 = false;
-  }
-  task3(){
-    this.check = false;
-    this.check1 = false;
-    this.navCtrl.push("Task3Page");
-    this.check2 = false;
-    this.done = true;
-  }
+  
 }

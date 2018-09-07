@@ -6,47 +6,29 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title text-center>Tasks</ion-title>
+  <ion-navbar color="web">
+    <ion-title text-center> <ion-icon name="book"></ion-icon>
+      <link href="https://fonts.googleapis.com/css?family=Cardo|Lobster|Pacifico|Playfair+Display" rel="stylesheet">Tasks</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding id="web">
  
 <b><p text-center>Tasks to complete</p></b> 
     
-
-    <ion-card *ngIf="check">
-        <ion-card-header (click)="task1()">
-            <b>Task 1</b>
+    <div *ngFor="let item of tasksName; let i = index">
+      <ion-card color="web">
+        <ion-card-header (click)="task(item.name)">
+            <b>{{item?.name}}</b>
         </ion-card-header>
-        <ion-card-content (click)="task1()">
+        <ion-card-content (click)="task(item.name)">
             
-         Click here to begin Task 1
+         Click here to begin {{item?.name}} 
         </ion-card-content>
       </ion-card>
 
-      <ion-card *ngIf="check1">
-        <ion-card-header (click)="task2()">
-            
-            <b>Task 2</b>
-        </ion-card-header>
-        <ion-card-content (click)="task2()">
-            
-         Click here to begin Task 2
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card *ngIf="check2">
-        <ion-card-header (click)="task3()">
-            <b>Task 3</b>
-        </ion-card-header>
-        <ion-card-content (click)="task3()">
-            
-         Click here to begin Task 3
-        </ion-card-content>
-      </ion-card>
-<b><p *ngIf="done">No Tasks Available</p></b>
+    </div>
+    
 </ion-content>
